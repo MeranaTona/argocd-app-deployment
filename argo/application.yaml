@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-2
+  name: app-1
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/image-list: tf333/nginx:~v0.2
@@ -11,9 +11,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/MeranaTona/argocd-tutorial-app.git'
+    repoURL: 'https://github.com/MeranaTona/argocd-app-deployment.git'
     targetRevision: HEAD
-    path: environments/staging/app-2
+    path: applications/environments/staging/app-1
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
@@ -23,6 +23,6 @@ spec:
       allowEmpty: false
     syncOptions:
       - Validate=true
-      - CreateNamespace=false
+      - CreateNamespace=true
       - PrunePropagationPolicy=foreground
       - PruneLast=true
