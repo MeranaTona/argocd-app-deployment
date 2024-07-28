@@ -1,0 +1,10 @@
+---
+namespace: staging
+replicas:
+  - name: app-1
+    count: 2
+images:
+  - name: tf333/nginx
+    newTag: v0.1.3
+resources:
+  - ../../../app-base
